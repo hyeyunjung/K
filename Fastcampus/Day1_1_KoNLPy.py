@@ -9,6 +9,3 @@ for tagger in taggers:
     print('tagger name = %10s\tclass_name = %s' % (name, tagger.__class__))
 
 '%.3f' % 1.3205533
-
-
-eeer
