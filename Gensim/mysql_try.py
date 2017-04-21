@@ -47,6 +47,42 @@ def mecab_nouns_count(filename):
 
 try:
     with connection.cursor() as cursor:
+        # tjsxor
+        sql = "SELECT Year, Grade, Subject, strDate, Specials FROM creativeexperactivity_1"
+        cursor.execute(sql)
+        CEA1 = cursor.fetchall()
+
+    connection.commit()
+
+
+finally:
+    connection.close()
+
+#print(CEA1[3][4])
+#print(CEA1)
+#print(mecab_nouns_count(CEA1[3][4]))
+#ooo = mecab_nouns_count(CEA1[3][4])
+#print(ooo)
+
+list_wc = []
+lsit_dd = []
+k=0
+for i in CEA1:
+    result = (i)[4]
+    print(k)
+    print(result)
+    print(mecab_nouns_count(result))
+    k += 1
+
+#    list_dd = mecab_nouns_count(result)
+#    list_wc.append(list_dd)
+
+#print(list_wc)
+
+
+"""
+
+
         # Create a new record
         sql = "INSERT INTO CEA1_WORDCOUNT(SEQ, WORD, COUNT) VALUES (, %S, %S)"
         cursor.execute(sql, )
@@ -54,20 +90,8 @@ try:
 
 
 
-
-
-
-
-finally:
-    connection.close()
-
-
-
-
-
-
 for i in list_CreExpAct1:
-    Specials = (i)['Specials']
+Specials = (i)['Specials']
 
 
 
@@ -75,14 +99,14 @@ for i in list_CreExpAct1:
 # csv 데이터 내보내는 함수 정의
 list_write_csv = []
 def write_csv_data(filename, data_list):
-    csvfile = open(filename, 'w', newline='')
-    csv_columns = ['word', 'count']
-    writer = csv.DictWriter(csvfile, filedname=csv_columns)
-    writer.writeheader()
-    for row in list_write_csv:
-        writer.writerow(row)
-    csvfile.close()
-    return list_write_csv
+csvfile = open(filename, 'w', newline='')
+csv_columns = ['word', 'count']
+writer = csv.DictWriter(csvfile, filedname=csv_columns)
+writer.writeheader()
+for row in list_write_csv:
+    writer.writerow(row)
+csvfile.close()
+return list_write_csv
 # ----------------------------------------------------------------------
 
 
@@ -91,8 +115,6 @@ def write_csv_data(filename, data_list):
 
 
 
-
-"""
 try:
    with connection.cursor() as cursor:
        # Create a new record
@@ -108,4 +130,7 @@ try:
        result = cursor.fetchone()
        print(result)
 """
+
+
+
 
